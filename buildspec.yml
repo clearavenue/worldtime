@@ -7,7 +7,7 @@ phases:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - echo Logged in to AWS ECR successfully
       - echo Starting Docker test...
-      - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn clean package verify
+      - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:latest mvn clean package verify
     finally: 
       - ls -la target
       - aws s3 sync . s3://clearavenue-devsecops
