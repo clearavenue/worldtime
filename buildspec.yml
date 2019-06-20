@@ -15,6 +15,7 @@ phases:
   post_build:
     commands:
       - echo Pushing docker image to ECR
+      - ls -la
       - docker image ls
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Docker image pushed
