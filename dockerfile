@@ -3,7 +3,7 @@ COPY pom.xml /tmp/
 COPY worldtime-pmd.xml /tmp/
 COPY src /tmp/src/
 WORKDIR /tmp/
-RUN mvn clean verify package
+RUN mvn clean package -DskipTests
 
 FROM openjdk:8-jdk-alpine
 VOLUME /tmp
