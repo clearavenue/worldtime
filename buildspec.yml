@@ -13,6 +13,7 @@ phases:
     finally: 
       - ls -la 
       - aws s3 sync . s3://clearavenue-devsecops
+      - echo Done syncing S3
   build:
     commands:
       - echo Building the Docker image...
@@ -22,13 +23,9 @@ phases:
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Docker Image tagged with - $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
-    finally: 
-      - docker run --rm --entrypoint ls $IMAGE_REPO_NAME /tmp
-      - docker run --rm --entrypoint cat $IMAGE_REPO_NAME /tmp/target/dependency-check-report.html > dependency-check-report.html
-  post_build:
+post_build:
     commands:
       - echo Pushing docker image to ECR
-      - ls -la
       - docker image ls
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
       - echo Docker image pushed
@@ -38,5 +35,3 @@ phases:
 artifacts:
   files:
     - Dockerrun.aws.json
-    - '**/*'
-  name: myname-$(date +%Y-%m-%d) 
