@@ -9,7 +9,7 @@ phases:
       - echo Starting Docker test...
       - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn clean package verify
     finally: 
-      - ls -la 
+      - ls -la target
       - aws s3 sync . s3://clearavenue-devsecops
       - echo Done syncing S3
   build:
