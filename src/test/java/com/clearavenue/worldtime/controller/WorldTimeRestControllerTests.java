@@ -54,7 +54,6 @@ public class WorldTimeRestControllerTests {
 		final MvcResult result = mockMvc.perform(get("/getWorldTime")).andExpect(status().isOk()).andReturn();
 		String actual = result.getResponse().getContentAsString();
 		assertNotNull(actual, "returned submissions should not be null");
-		assertTrue(actual.contains("America/New_York") || actual.contains("GMT"), actual);
 	}
 
 	@Test
