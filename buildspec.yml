@@ -14,6 +14,7 @@ phases:
       - ls -la
       - aws s3 sync .  s3://clearavenue-devsecops/$IMAGE_REPO_NAME/
       - echo Done syncing S3
+      - echo cd ..
   build:
     commands:
       - echo Building the Docker image...
