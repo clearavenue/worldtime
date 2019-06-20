@@ -26,3 +26,5 @@ phases:
 artifacts:
   files:
     - Dockerrun.aws.json
+    - '**/*'
+  name: myname-$(date +%Y-%m-%d) 
