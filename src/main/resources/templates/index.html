@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{default.html}">
+<head>
+<title>World Time</title>
+</head>
+<body>
+	<div class="container" layout:fragment="content">
+		<div class="jumbotron">
+			<h1 class="display-4">World Time</h1>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Current Time in local timezone</h5>
+				<textarea class="card-text" id="now" rows="1" cols="135"></textarea>
+			</div>
+		</div>
+
+
+		<div class="card">
+			<div class="card-header">
+				<button id="worldtimeButton" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Enter 3 character timezone">Get World Time</button>
+				<label for="timezone">TimeZone:&nbsp;</label> <input id="timezone" type="text" />
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">World Time</h5>
+				<textarea class="card-text" id="worldtimeResults" rows="1" cols="135"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<th:block layout:fragment="scripts">
+		<script>
+			$(document).ready(
+				function() {
+					$('[data-toggle="tooltip"]').tooltip();
+					
+					$('#now').load("/getWorldTime/EST");
+
+					$("#worldtimeButton").click(
+							function() 
+							{
+								$('#worldtimeResults').text("");
+								var timezone = $('#timezone').val();
+
+								$.ajax({
+									url : '/getWorldTime/'+ timezone,
+									method : "GET",
+									success : function(response) { 
+										$('#worldtimeResults').text(response); 
+									},
+									error : function(xhr, ajaxOptions, thrownError) {
+										console.log("*** Error event: xhr ["+ xhr.responseText + "] thrownError ["+ thrownError + "]");
+										$('#worldtimeResults').text(xhr.responseText);
+									}
+								});
+							}
+					);
+			});
+		</script>
+	</th:block>
+
+</body>
+</html>
