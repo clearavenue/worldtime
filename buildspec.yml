@@ -12,8 +12,7 @@ phases:
       - ls -la target
       - cd target 
       - ls -la
-      - aws s3 sync ./dependency-check-report.html  s3://clearavenue-devsecops/$IMAGE_REPO_NAME/
-      - aws s3 sync ./surefire-reports/ s3://clearavenue-devsecops/$IMAGE_REPO_NAME/
+      - aws s3 sync .  s3://clearavenue-devsecops/$IMAGE_REPO_NAME/
       - echo Done syncing S3
   build:
     commands:
