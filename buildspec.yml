@@ -12,8 +12,8 @@ phases:
       - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn verify
     finally: 
       - ls -la 
-      - aws s3 mb s3://testbucket
-      - aws s3 sync . s3://testbucket
+      - aws s3 mb s3://clearavenue-devsecops
+      - aws s3 sync . s3://clearavenue-devsecops
   build:
     commands:
       - echo Building the Docker image...
