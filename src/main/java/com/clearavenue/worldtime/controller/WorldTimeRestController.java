@@ -23,7 +23,7 @@ public class WorldTimeRestController {
 			result = DateTimeFormatter.ISO_ZONED_DATE_TIME.format(now);
 
 			// uncomment next line to test SPOTBUGS
-			// result = result;
+			result = result;
 		} else {
 			ZonedDateTime now = ZonedDateTime.now();
 			result = DateTimeFormatter.ISO_ZONED_DATE_TIME.format(now);
