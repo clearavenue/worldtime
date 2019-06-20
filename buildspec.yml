@@ -6,8 +6,6 @@ phases:
       - echo Log into AWS ECR
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - echo Logged in to AWS ECR successfully
-  pre_build: 
-    commands:
       - echo Starting Docker test...
       - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn verify
     finally: 
