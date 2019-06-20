@@ -10,7 +10,8 @@ phases:
       - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:latest mvn clean package verify
     finally: 
       - ls -la target
-      - aws s3 sync . s3://clearavenue-devsecops
+      - aws s3 sync ./target/dependency-check-report.html  s3://clearavenue-devsecops/$IMAGE_REPO_NAME/dependency-check-report.html 
+      - aws s3 sync ./target/surefire-reports/**.* s3://clearavenue-devsecops/$IMAGE_REPO_NAME/surefire-reports/
       - echo Done syncing S3
   build:
     commands:
