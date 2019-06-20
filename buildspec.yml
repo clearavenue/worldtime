@@ -9,7 +9,7 @@ phases:
   pre_build: 
     commands:
       - echo Starting Docker test...
-      - docker run -it --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn verify
+      - docker run --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock maven:3 mvn verify
       - ls -la 
   build:
     commands:
