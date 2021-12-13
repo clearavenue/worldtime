@@ -1,2 +1,2 @@
-# worldtime demo application
+# worldtime demo application for jenkins
 `mvn clean package`
