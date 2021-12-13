@@ -45,7 +45,7 @@ public class WorldTimeRestControllerTests {
 
 	@BeforeEach
 	public void setup() {
-		MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.openMocks(this);
 		mockMvc = webAppContextSetup(webApplicationContext).build();
 	}
 
