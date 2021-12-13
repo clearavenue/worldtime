@@ -1,2 +1,2 @@
 # worldtime
-`mvn clean package verify`
+`mvn clean package`
