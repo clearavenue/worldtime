@@ -1,2 +1,2 @@
-# worldtime demo application for jenkins
+# worldtime demo application for jenkins devsecops
 `mvn clean package`
