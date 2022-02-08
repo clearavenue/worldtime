@@ -11,4 +11,9 @@ public class WorldTimeController {
 	public String index(final ModelMap model) {
 		return "index";
 	}
+
+	@GetMapping("/getTime")
+	public String getTime(final ModelMap model) {
+		return "getTime";
+	}
 }
