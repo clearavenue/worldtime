@@ -1,5 +1,8 @@
 package com.clearavenue.worldtime.controller;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,5 +18,11 @@ public class WorldTimeController {
 	@GetMapping("/getTime")
 	public String getTime(final ModelMap model) {
 		return "getTime";
+	}
+
+	@GetMapping(path = "/logout")
+	public String logout(HttpServletRequest request) throws ServletException {
+		request.logout();
+		return "/";
 	}
 }
