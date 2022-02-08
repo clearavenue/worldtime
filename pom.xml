@@ -11,7 +11,7 @@
 
 	<groupId>com.clearavenue</groupId>
 	<artifactId>worldtime</artifactId>
-	<version>1.3.3</version>
+	<version>1.3.4</version>
 	<name>worldtime</name>
 	<description>WorldTime from clearAvenue</description>
 

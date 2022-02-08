@@ -23,6 +23,6 @@ public class WorldTimeController {
 	@GetMapping(path = "/logout")
 	public String logout(HttpServletRequest request) throws ServletException {
 		request.logout();
-		return "/";
+		return "redirect:https://keycloak.devsecops.clearavenue.com/auth/realms/clearavenue/protocol/openid-connect/logout?redirect_uri=https://worldtime.devsecops.clearavenue.com";
 	}
 }
