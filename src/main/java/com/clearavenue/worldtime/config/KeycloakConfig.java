@@ -28,7 +28,8 @@ public class KeycloakConfig extends KeycloakWebSecurityConfigurerAdapter {
 		// @formatter:off
 		http.authorizeRequests()
 		     .antMatchers("/").permitAll()
-		     .antMatchers("/actuator*").hasAnyRole("admin")
+		     .antMatchers("/actuator").hasAnyRole("admin")
+		     .antMatchers("/actuator/**").hasAnyRole("admin")
 		     .anyRequest().authenticated();
 		// @formatter:on
 	}
